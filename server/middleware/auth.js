@@ -11,7 +11,7 @@ exports.auth = async (req, res, next) => {
 		// Extracting JWT from request cookies, body or header
 		const token =
 			req.cookies.token ||
-			req.body.token ||
+			req.body.token ||	
 			req.header("Authorization").replace("Bearer ", "");
 
 		// If JWT is missing, return 401 Unauthorized response
@@ -67,7 +67,7 @@ exports.isAdmin = async (req, res, next) => {
 			return res.status(401).json({
 				success: false,
 				message: "This is a Protected Route for Admin",
-			});
+			});	
 		}
 		next();
 	} catch (error) {
